@@ -9,12 +9,6 @@ const AuthController = {
     try {
       const { username, email, password } = req.body;
 
-      // Vérifier si l'utilisateur existe
-      const user = await UserModel.findOne({ email });
-      if (!user) {
-        return res.status(401).json({ message: 'Identifiants invalides.' });
-      }
-
       // Créer un nouvel utilisateur
       const newUser = new UserModel({
         username,
@@ -32,6 +26,31 @@ const AuthController = {
       return res.status(500).json({ message: 'Erreur lors de l\'enregistrement de l\'utilisateur.' });
     }
   },
+  // Fonction pour la connexion de l'utilisateur
+  async login(req, res) {
+    try {
+      const { email, password } = req.body;
+
+      // Vérifier si l'utilisateur existe
+      const user = await UserModel.findOne({ email });
+      if (!user) {
+        return res.status(401).json({ message: 'Identifiants invalides.' });
+      }
+
+      // Vérifier le mot de passe
+    //   const passwordMatch = await bcrypt.compare(password, user.password);
+    //   if (!passwordMatch) {
+    //     return res.status(401).json({ message: 'Identifiants invalides.' });
+    //   }
+
+      // Générer un token JWT
+      
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Erreur lors de la connexion.' });
+    }
+  },
+  
 
   
 };
