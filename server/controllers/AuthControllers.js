@@ -9,6 +9,12 @@ const AuthController = {
     try {
       const { username, email, password } = req.body;
 
+      // Vérifier si l'utilisateur existe
+      const user = await UserModel.findOne({ email });
+      if (!user) {
+        return res.status(401).json({ message: 'Identifiants invalides.' });
+      }
+
       // Créer un nouvel utilisateur
       const newUser = new UserModel({
         username,
