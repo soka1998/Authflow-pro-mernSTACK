@@ -1,4 +1,3 @@
-
 import express from 'express';
 import mongoose, { connect } from 'mongoose';
 import {config} from "dotenv";
