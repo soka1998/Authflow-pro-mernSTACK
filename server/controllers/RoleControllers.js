@@ -42,6 +42,7 @@ const RoleController = {
       console.error(error);
       return res.status(500).json({ message: 'Erreur lors de la récupération des rôles.' });
     }
-  },}
+  },
+}
 
   module.exports = RoleController;
