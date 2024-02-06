@@ -19,8 +19,29 @@ const RoleController = {
         return res.status(400).json({ message: 'L\'utilisateur a déjà ce rôle.' });
       }
  
+       // Ajouter le nouveau rôle à l'utilisateur
+       user.roles.push(roleName);
+
+       // Sauvegarder les modifications dans la base de données
+       await user.save();
+ 
+       return res.status(200).json({ message: 'Rôle attribué avec succès.' }); 
 
     }catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Erreur lors de l\'attribution du rôle.' });
-      }}}
+      }},
+    // Récupérer la liste des rôles
+  async getRoles(req, res) {
+    try {
+      // Vous pouvez ajuster cette requête pour obtenir uniquement les rôles distincts
+      const roles = await UserModel.distinct('roles');
+
+      return res.status(200).json({ roles });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Erreur lors de la récupération des rôles.' });
+    }
+  },}
+
+  module.exports = RoleController;
