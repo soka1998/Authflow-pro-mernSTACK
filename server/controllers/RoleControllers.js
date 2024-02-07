@@ -21,4 +21,22 @@ const RoleController = async (req, res) => {
   }
 };
 
-module.exports = RoleController;
+//Get role by id 
+const getRoleById= async(req,res)=>{
+  try {
+    const {roleId} = req.params;
+    const role = await Role.findById(roleId);
+    if(!role){
+      return res.status(400).json({error:'Role not found'})
+    }
+    res.json(role)
+  } catch (error) {
+    console.error('Error getting role by Id ',error)
+    res.status(500).json({error:'Internal server error '})
+  }
+}
+
+
+const Role= {RoleController,getRoleById}
+export default defaultRole;
+// module.exports = RoleController;
