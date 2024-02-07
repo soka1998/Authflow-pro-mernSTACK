@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   username: { 
@@ -17,10 +17,8 @@ const userSchema = new mongoose.Schema({
       required:[true, 'please enter a valid email'],
       minlength: [6, 'At least enter 6 character'],
     },
-  roles: { 
-    type: Array, 
-    default: ["user"] }, // Par défaut, chaque utilisateur a le rôle 'user'
-});
+    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }] 
+  });
 
 const UserModel = mongoose.model("User", userSchema);
 
