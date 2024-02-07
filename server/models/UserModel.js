@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   username: { 
@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
      type: String,
       required:[true, 'please enter a valid email'],
       minlength: [6, 'At least enter 6 character'],
-    }
+    },
+    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }] 
   });
 
 const UserModel = mongoose.model("User", userSchema);
