@@ -10,7 +10,7 @@ const RoleController = async (req, res) => {
     if (existingRole) {
       return res
         .status(400)
-        .json({ error: "Role with this name alreadyexist " });
+        .json({ error: "Role with this name already exist " });
     }
     //Create new Role
     const newRole = await Role.create({ name });

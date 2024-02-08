@@ -8,6 +8,8 @@ const UserRouter = Router();
 UserRouter.post('/signup', UserController.signup);
 // Route for user login
 UserRouter.post('/login',UserController.login);
+//Route for user logout 
+UserRouter.get('/logout',UserController.logout)
 
 
 export default UserRouter;
