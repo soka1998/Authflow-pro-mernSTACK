@@ -8,4 +8,4 @@ const permissionShema= new mongoose.Schema({
 }, 
 })
 
-export default  permissionShema ;
+export default  permissionShema;
