@@ -84,6 +84,6 @@ const createPermission  = async(req,res)=>{
 
 
 
-const PermissionController= {deletePermissionById ,updatePermissionById,getPermissionById ,getAllPermissions}
+const PermissionController= {createPermission,deletePermissionById ,updatePermissionById,getPermissionById ,getAllPermissions}
   export default PermissionController;
     
