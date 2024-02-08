@@ -53,14 +53,24 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: User._id }, process.env.Secret_key, {
       expiresIn: "10h",
     });
-    res.json({ token });
+    res.cookie("token", token);
+    res.status(200).json({ token });
   } catch (error) {
     console.error("Error signing in:", error);
     res.status(500).json({ error: "Internal server error" + error });
   }
 };
+//Logout method
+const logout = (req, res) => {
  
+    try {
+        res.clearCookie('token')
+        res.status(200).json({success:true,message:"Successfully logged out!"})
+    } catch (error) {
+        res.status(500).json({success:false,message:'something went wrong'});
+    }
+  
+};
 
-const UserController= { signup , login };
-export default UserController ;
-
+const UserController = { signup, login ,logout};
+export default UserController;
