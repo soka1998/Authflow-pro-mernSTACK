@@ -1,10 +1,10 @@
-import {User} from "../models/UserModel.js"
+import User from "../models/UserModel.js"
 import bcrypt from "bcrypt";
 import  jwt from 'jsonwebtoken';
 import {config} from "dotenv";
 
 config();
-
+//signup function
 const signup = async (req, res) =>{
     const {username,email,password}= req.body;
     try {
@@ -15,13 +15,14 @@ const signup = async (req, res) =>{
             //Hash password
             const salt = await bcrypt.genSalt(10);
             const passHash= await bcrypt.hash(password,salt);
-            //creat token for authentification
-            const token = jwt.sign({userId:newUser._id, username:newUser.username},process.env.Secret_key,{expireIn:'2h'})
-           const newUser= await User.create({username,email,password:passHash});
+           const newUser= new User({
+            username,
+            email,
+            password : passHash
+           })
             //save user in database
             await newUser.save();
-
-            res.status(201).json({success:true,message:'Use created successfully!',token})
+            res.status(201).json({success:true,message:'Use created successfully!'})
     } catch (error) {
         console.log('Error in SignUp', error);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
@@ -29,7 +30,9 @@ const signup = async (req, res) =>{
         
     }
 
+    //login function
 
 
 
-module.exports={signup};
+
+export default signup;

@@ -3,6 +3,7 @@ import mongoose, { connect } from 'mongoose';
 import {config} from "dotenv";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import UserRouter from '../routes/AuthRoute.js';
 
 config()
 
@@ -12,7 +13,7 @@ app.use(cors())
 app.use(express.json());
 app.use(cookieParser())
 // app.use("/api",router)
-// app.use("/user",UserRouter)  
+app.use("/user",UserRouter)  
 
 const PORT = process.env.PORT || 4000
 
