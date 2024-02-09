@@ -1,14 +1,11 @@
-import {Router} from "express";
-import express from "express";
-import RoleController from '../controllers/RoleControllers'
+import {Router} from "express"
+import {rolesControllers} from '../controllers/RoleControllers.js'
+import { assignRoleToUser } from "../controllers/AssignRoles.js";
 
+const RolesRouter = Router();
 
-const RoleController= Router();
+RolesRouter.post('/', rolesControllers.createRole);
+RolesRouter.get('/', rolesControllers.getRoles);
+RolesRouter.patch('/assign',assignRoleToUser);
 
-//Route for creating a new role
-Router.post('/',RoleController.newRole); 
-
-//Rout for getting a role by ID 
-Router.get('/:roleId',RoleController.getRoleById);
-
-export default RoleController;
+export default RolesRouter;

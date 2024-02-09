@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
       required:[true, 'please enter a valid email'],
       minlength: [6, 'At least enter 6 character'],
     },
-    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }] 
+    role: { type: mongoose.Schema.Types.ObjectId, ref: 'Role' } 
   });
 
 const UserModel = mongoose.model("User", userSchema);

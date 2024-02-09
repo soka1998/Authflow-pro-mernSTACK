@@ -50,7 +50,7 @@ const login = async (req, res) => {
         .json({ success: false, message: "Invalid credentials" });
     }
     //Create and send JWT token
-    const token = jwt.sign({ userId: User._id }, process.env.Secret_key, {
+    const token = jwt.sign({ userId: userLogin._id,role:userLogin.role }, process.env.Secret_key, {
       expiresIn: "10h",
     });
     res.cookie("token", token);
