@@ -1,10 +1,9 @@
 import React from 'react';
 import logo from '../assets/logo.svg';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../context';
-
+import authSlice  from '../auth/authSlice';
 const Navbar = () => {
-  const { user, logoutUser } = useGlobalContext();
+  const { user, logoutUser } = authSlice();
   return (
     <Wrapper>
       <div className='nav-center'>
