@@ -3,9 +3,9 @@ import mongoose, { connect } from 'mongoose';
 import {config} from "dotenv";
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import UserRouter from './routes/AuthRoute.js';
-import RolesRouter from './routes/RoleRoutes.js';
-import permissionsRouter from './routes/PermissionRouts.js';
+import UserRouter from '../routes/AuthRoute.js';
+import RolesRouter from '../routes/RoleRoutes.js';
+import permissionsRouter from '../routes/PermissionRouts.js';
 
 config()
 
