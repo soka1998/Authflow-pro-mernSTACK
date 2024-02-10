@@ -5,11 +5,20 @@ import axios from "axios";
 import Input from "../components/Input";
 
 const SignUp = () => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [errors, setErrors] = useState({});
+  const [value, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const {
+    alert,
+    showAlert,
+    loading,
+    setLoading,
+    success,
+    setSuccess,
+    hideAlert,
+  } = useLocalState();
 
   const Navigate = useNavigate();
 
