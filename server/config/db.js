@@ -7,7 +7,7 @@ import UserRouter from '../routes/AuthRoute.js';
 import RolesRouter from '../routes/RoleRoutes.js';
 import permissionsRouter from '../routes/PermissionRouts.js';
 
-config()
+config() ; 
 
 
 const app =  express();

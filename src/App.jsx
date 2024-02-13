@@ -1,15 +1,25 @@
+// import { Router } from "express";
+import {BrowserRouter as Router ,Routes,Route } from 'react-router-dom';
+import "./App.css";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import Home from './pages/Home';
 
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
-
+// import { Route } from "react-router-dom";
 
 function App() {
-  
-
   return (
-     <h1>hello</h1>
-  )
+    <>
+      <Router>
+        <Routes>
+          <Route path='/Home' element={<Home/>}></Route>
+          <Route  path="/Login" element={<Login />}></Route>
+          <Route path="/Signup" element={<SignUp />}></Route>
+          
+        </Routes>
+      </Router>
+    </>
+  );
 }
 
-export default App
+export default App;
