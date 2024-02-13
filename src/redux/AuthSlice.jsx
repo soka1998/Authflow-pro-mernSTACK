@@ -1,3 +1,4 @@
+// AuthSlice.js
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useCookies } from 'react-cookie';
@@ -20,6 +21,17 @@ export const register = createAsyncThunk('auth/register', async (userData) => {
   const response = await register(userData);
   return response.data;
 });
+
+// Define the logout action
+export const logout = () => async (dispatch) => {
+  // Clear token from cookies or localStorage
+  // For example, if using cookies:
+  const [_, removeCookies] = useCookies(['access_token']);
+  removeCookies('access_token');
+
+  // Dispatch the logout action to update Redux state
+  dispatch({ type: 'auth/logout' });
+};
 
 const authSlice = createSlice({
   name: 'auth',

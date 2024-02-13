@@ -23,6 +23,7 @@ function App() {
           {/* <PrivateRoute path="/dashboard" element={<Dashboard />} isAuthenticated={isAuthenticated} /> */}
 
           <Route path="/Signup" element={<SignUp/>}></Route>
+          <Route path="dashboard" element={<Dashboard />}></Route>
           
         </Routes>
       </Router>

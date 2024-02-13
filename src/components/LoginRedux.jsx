@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/AuthSlice';
 import axios from 'axios';
-import Dashboard from './Dashboard';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginRedux() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,9 +21,8 @@ function LoginRedux() {
       console.log('Logged in with success', token);
       // Store token in localStorage for future requests
       localStorage.setItem('token', token);
-      navigate('/Dashboard')
-     
-
+      // Redirect to Dashboard upon successful login
+      navigate('/Dashboard');
     } catch (error) {
       console.error('Error logging in:', error);
       // Handle login error
@@ -33,7 +30,7 @@ function LoginRedux() {
   };
 
   return (
-    <form className="login bg-indigo-500 p-8 rounded-lg shadow-md" onSubmit={handleSubmit}>
+    <form className="login p-8 rounded-lg shadow-md bg-violet-300" onSubmit={handleSubmit}>
       <h3 className="text-white text-2xl mb-4">Login</h3>
       <div className="mb-4">
         <label htmlFor="email" className="block text-white mb-1">Email:</label>
@@ -53,19 +50,20 @@ function LoginRedux() {
           value={password}
         />
       </div>
-      <button className="bg-pink-500 text-white border border-green-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
-        <span className="bg-purple-500 shadow-purple-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-        Log In
-      </button>
+      {/* Use Link instead of button to navigate to the Dashboard */}
+      <Link to="/dashboard" className="dashboard">
+        <button className="bg-pink-500 text-white border border-green-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+          <span className="bg-purple-500 shadow-purple-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+          Log In
+        </button>
+      </Link>
       <p>
         Don't have an account?
         <a
-          class="font-semibold text-white hover:text-blue-500 transition-all duration-200"
+          className="font-semibold text-white hover:text-blue-500 transition-all duration-200"
           href="/SignUp"
-          ><br/>Sign up</a
-        >
+        ><br/>Sign up</a>
       </p>
-   
     </form>
   );
 }

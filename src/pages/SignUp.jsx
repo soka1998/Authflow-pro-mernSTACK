@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import { navigate } from "react-router-dom"; // Import navigate function from react-router-dom
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState(""); // Initialize username state
@@ -11,6 +13,8 @@ const SignUp = () => {
     e.preventDefault();
     console.log(email + " " + password);
     alert("SUBMITTED");
+    navigate('/dashboard')
+
 
     try {
       await axios.post("http://localhost:4000/auth/signup", {
@@ -18,14 +22,14 @@ const SignUp = () => {
         email,
         password,
       });
-      navigate("/login"); // Corrected navigate method and path
+      // navigate("/login"); // Corrected navigate method and path
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <form className="signup bg-indigo-500 p-8 rounded-lg shadow-md" onSubmit={handleSubmit}>
+    <form className="signup bg-violet-300 p-8 rounded-lg shadow-md" onSubmit={handleSubmit}>
       <h3 className="text-white text-2xl mb-4">Sign Up</h3>
       <div className="mb-4">
         <label htmlFor="username" className="block text-white mb-1">Username:</label>
