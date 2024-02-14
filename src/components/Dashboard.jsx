@@ -7,13 +7,13 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+ const handleLogout = () => {
     // Clear token from localStorage
     localStorage.removeItem('token');
     // Dispatch logout action to update Redux state
     dispatch(logout());
     // Redirect to login page or any other desired route
-    navigate('/');
+    navigate('/'); 
   };
 
   return (

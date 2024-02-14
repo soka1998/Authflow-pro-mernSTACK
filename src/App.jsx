@@ -7,6 +7,7 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import LoginRedux from './components/LoginRedux';
 import Dashboard from './components/Dashboard';
+import SignUpRedux from './components/SignUpRedux';
 // import PrivateRoute  , {isAuthenticated} from './components/PrivateRoute';
 
 
@@ -22,7 +23,7 @@ function App() {
           <Route  path="/Login" element={<LoginRedux />}></Route>
           {/* <PrivateRoute path="/dashboard" element={<Dashboard />} isAuthenticated={isAuthenticated} /> */}
 
-          <Route path="/Signup" element={<SignUp/>}></Route>
+          <Route path="/Signup" element={<SignUpRedux/>}></Route>
           <Route path="dashboard" element={<Dashboard />}></Route>
           
         </Routes>
