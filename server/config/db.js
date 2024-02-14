@@ -6,8 +6,10 @@ import cors from 'cors';
 import UserRouter from '../routes/AuthRoute.js';
 import RolesRouter from '../routes/RoleRoutes.js';
 import permissionsRouter from '../routes/PermissionRouts.js';
+import swaggerDocs from '../docs/swagger.js';
 
 config() ; 
+
 
 
 const app =  express();
@@ -29,7 +31,7 @@ connect(process.env.MONGO_URL)
     console.log("mongodb not connected ", error)
 })      
 
-// swaggerDocs(app, PORT )
+swaggerDocs(app, PORT )
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);

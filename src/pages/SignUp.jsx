@@ -65,7 +65,7 @@ const SignUp = () => {
       <p>
         Already have an Account?
         <a
-          class="font-semibold text-white hover:text-blue-500 transition-all duration-200"
+          className="font-semibold text-white hover:text-blue-500 transition-all duration-200"
           href="/Login"
           ><br />Login</a
         >
