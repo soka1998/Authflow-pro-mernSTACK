@@ -25,6 +25,7 @@ const Home = () => {
                   <span className="bg-violet-500 shadow-violet-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>{" "}
                   Login
                 </button>
+                
               </Link>
               <Link to="/signup" className="text-black hover:text-green-100">
                 <button className="bg-violet-700 text-white border border-green-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
